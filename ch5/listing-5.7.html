@@ -1,0 +1,21 @@
+<button id='test'>Click Me!</button>
+
+<script type='text/javascript'>
+
+	function bind(context, name) {
+		return function() {
+			return context[name].apply(context, arguments);
+		}
+	}
+	var button = {
+		clicked: false,
+		click: function() {
+			this.clicked = true;
+			if(button.clicked)
+			 console.log("The button was clicked");
+		},
+	};
+
+	var elem = document.getElementById('test');
+	elem.addEventListener('click', bind(button, 'click'), false);
+</script>
